@@ -1,0 +1,54 @@
+<!-- form for registration by admin to edit and create both -->
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, required: true%>
+  </div>
+<div class="field" >
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, required: true %>
+  </div>
+<div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, autofocus: true, placeholder: 'dd-mm-yyyy'%>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+<div class="field">
+ <%= f.file_field :image %>
+ </div>
+  <div class="actions">
+    <%= f.submit "update User" %>
+  </div>
+
+<% end %>

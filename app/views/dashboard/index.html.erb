@@ -1,0 +1,31 @@
+<h1>DASHBOARD ADMIN</h1>
+<%= link_to "Add new acoount", new_user_path %>
+
+<table>
+	<tr>
+		<td>Usersname</td>
+		<td>email</td>
+		<td> Actions</td>
+	</tr>
+
+<% @users.each do |f| %>
+<tr>
+<td><%= f.username %></td><br />
+<td><%= f.email %></td>
+<td> <%= link_to "Edit", edit_user_path(f), 'data-no-turbolink' => true%>|
+<a href="/admin/users/<%=f.id%>/delete" onclick="if(confirm('Are you sure you want to delete this page?'))  return true;  else  return false;" class="button negative" >Delete</a>|
+
+ <% if f.banned? %>
+<a href="/admin/users/<%=f.id%>/unblock" onclick="if(confirm('Are you sure you want to Unblock  this user?'))  return true;  else  return false;" class="button negative" >UnBlock</a>
+
+<% else %>
+
+<a href="/admin/users/<%=f.id%>/block" onclick="if(confirm('Are you sure you want to block  this user?'))  return true;  else  return false;" class="button negative" >Block</a>
+
+<% end %>
+
+</td>
+</tr>
+<%end%>
+</table>
+

@@ -1,0 +1,16 @@
+<header><h1> My Profile</h1></header>
+<ul>
+
+<%= image_tag current_user.image_url(:thumb).to_s %>
+
+
+<p><li><h2>UserName:</h2> <%= current_user.username %></li></p>
+<p><li><h2>FirstName:</h2> <%= current_user.first_name %></li></p>
+<p><li><h2>LastName:</h2> <%= current_user.last_name %></li></p>
+<p><li><h2>Birthdate:</h2> <%= current_user.birth_date %></li></p>
+<p><li><h2>Email:</h2> <%= current_user.email %></li></p>
+
+<br/>
+
+</ul>
+<%= link_to("Back", root_path) %>
